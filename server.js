@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
+const ejs = require('ejs')
 const PORT = 8000
 
 let db, 
@@ -20,7 +21,14 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     console.log("rendered")
-    res.send('Hello world')
+    data = [
+        {
+            word: "hi"
+        }
+    ]
+    res.render('index.ejs', {data:data})
   })
+
+
 
 app.listen(process.env.PORT || PORT)
