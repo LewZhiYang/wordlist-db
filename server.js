@@ -37,7 +37,12 @@ app.post('/addWord', (req, res) => {
 })
 
 app.delete('/delete', (req, res) => {
-    console.log("delete palceholder")
+    db.collection('wordList').deleteOne({word: req.body.word})
+    .then(result => {
+        console.log(`deleted: ${req.body.word}`)
+        res.json(`deleted: ${req.body.word}`)
+    })
+    .catch(console.error)
 })
 
 app.listen(process.env.PORT || PORT)
