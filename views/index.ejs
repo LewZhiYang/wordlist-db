@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>Word List</h1>
-    <form action="addWord"></form>
     <ul>
         <% for (let i=0; i<data.length; i++) {%>
             <li class="word"> 
@@ -18,6 +17,10 @@
             </li>
         <% } %>            
     </ul>
+    <span>Add words</span>
+    <form action="/addWord" method="POST">
+        <input type="text" placeholder="Enter word" name="word">
+    </form>
     <script src="main.js"></script>
 </body>
 </html>
