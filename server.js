@@ -23,21 +23,21 @@ app.get('/', (req, res) => {
     data = db.collection('wordList').find().toArray()
     .then(data => {
         res.render('index.ejs', {data: data})
-        console.log(data)
         console.log("rendered")
     })
     .catch(console.error())
   })
 
 app.post('/addWord', (req, res) => {
-    console.log(req)
-    console.log(req.body)
     db.collection('wordList').insertOne(req.body)
     .then(result => {
-        console.log('word added')
+        console.log(`added: ${req.body.word}`)
         res.redirect('/')
     })
 })
 
+app.delete('/delete', (req, res) => {
+    console.log("delete palceholder")
+})
 
 app.listen(process.env.PORT || PORT)
